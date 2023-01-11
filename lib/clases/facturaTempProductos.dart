@@ -37,8 +37,18 @@ class FacturaDetalle {
       required this.nombreProducto,
       required this.cantidadProducto});
 
+  static List<FacturaDetalle> facturaDetalle = <FacturaDetalle>[];
+
+  static void addfacturaDetalle(FacturaDetalle detalle) {
+    print('inicio de la lista');
+    facturaDetalle.add(detalle);
+
+    print(detalle.codigoProducto.toString());
+    print('detalle agregado a la factura');
+  }
+
   static List<FacturaDetalle> getFacturaDetalle() {
-    return <FacturaDetalle>[];
+    return facturaDetalle.toList();
     //   FacturaDetalle(
     //       facturaNumero: '01',
     //       codigoProducto: '64511-23460-RE',

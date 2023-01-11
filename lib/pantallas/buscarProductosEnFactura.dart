@@ -63,27 +63,22 @@ class MySearchDelegateParaProductos extends SearchDelegate {
                   decoration: InputDecoration(hintText: 'Cantidad'),
                   keyboardType: TextInputType.numberWithOptions(
                       signed: false, decimal: true),
+                  onTap: () {
+                    query = suggestion.nombreProducto;
+                  },
                 ),
               ),
               Container(
                 alignment: Alignment.topRight,
                 child: ElevatedButton(
                   onPressed: () {
-                    // FacturaDetalle.getFacturaDetalle().add(FacturaDetalle(
-                    //     facturaNumero: "1",
-                    //     codigoProducto: suggestion.codigoProducto,
-                    //     montoproducto: suggestion.precioProducto,
-                    //     nombreProducto: suggestion.nombreProducto,
-                    //     cantidadProducto: textController.toString()));
-
-                    FacturaDetalle.getFacturaDetalle().add(FacturaDetalle(
+                    FacturaDetalle.addfacturaDetalle(FacturaDetalle(
                         facturaNumero: "1",
-                        codigoProducto: 'test',
-                        montoproducto: 155.2,
-                        nombreProducto: 'test',
-                        cantidadProducto: "10"));
-
-                    // Productos.getProductos().add(Productos(codigoProducto: codigoProducto, nombreProducto: nombreProducto, descripcionProducto: descripcionProducto, precioProducto: precioProducto))
+                        codigoProducto: suggestion.codigoProducto,
+                        montoproducto: suggestion.precioProducto,
+                        nombreProducto: suggestion.nombreProducto,
+                        cantidadProducto: textController.text.toString()));
+                    close(context, null);
                   },
                   child: Text('Agregar'),
                 ),
