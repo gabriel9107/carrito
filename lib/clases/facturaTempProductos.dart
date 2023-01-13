@@ -1,26 +1,80 @@
 import 'package:carrito/clases/clientes.dart';
+import 'package:flutter/services.dart';
 
 class FacturaMaster {
-  late String iD;
+  late int iD;
   String facturaNumero;
   String idClienteFactura;
-  DateTime fechaFactura;
+  // DateTime fechaFactura;
   int cantidadArticulos;
   double subtotal;
   double montoDescuento;
-  double montoImpuesto;
+  int montoImpuesto;
   double totalApagar;
 
   FacturaMaster(
       {required this.iD,
       required this.idClienteFactura,
-      required this.fechaFactura,
+      // required this.fechaFactura,
       required this.facturaNumero,
       required this.cantidadArticulos,
       required this.montoDescuento,
       required this.montoImpuesto,
       required this.subtotal,
       required this.totalApagar});
+
+  static totales() {
+    return FacturaMaster(
+        cantidadArticulos: 20,
+        facturaNumero: "1",
+        iD: 1,
+        idClienteFactura: "1",
+        montoDescuento: 15.4,
+        montoImpuesto: 2,
+        subtotal: 23,
+        totalApagar: 15);
+
+    // double impuestoEmpleado;
+    // double subtotalProducto;
+    // int cantidadArticulo;
+    // double montoDescuento ;
+    // double impuesto;
+
+    // montoDescuento = (subtotalProducto * descuentoPorEmpleador );
+
+    // impuestoEmpleado = 10;
+
+    // // impuestoEmpleado = impuestoPorEmpleador();
+
+    // subtotalProducto = FacturaDetalle.getFacturaDetalle()
+    //     .map((e) => e.montoproducto)
+    //     .reduce((value, element) => value + element)
+    //     .toDouble();
+
+    // cantidadArticulo = FacturaDetalle.getFacturaDetalle()
+    //     .map((e) => e.cantidadProducto)
+    //     .reduce((value, element) => value + element);
+
+    // impuesto = (subtotalProducto * impuestoEmpleado);
+
+    // var result = FacturaMaster(
+    //     iD: 1,
+    //     idClienteFactura: "40221025725",
+    //     facturaNumero: "1",
+    //     cantidadArticulos: cantidadArticulo,
+    //     montoDescuento:
+    //     montoImpuesto:impuesto,
+    //     subtotal: subtotal,
+    //     totalApagar: totalApagar);
+  }
+
+  double impuestoPorEmpleador() {
+    return 10.0;
+  }
+
+  double descuentoPorEmpleador() {
+    return 10.0;
+  }
 }
 
 class FacturaDetalle {
@@ -28,7 +82,7 @@ class FacturaDetalle {
   String codigoProducto;
   String nombreProducto;
   double montoproducto;
-  String cantidadProducto;
+  int cantidadProducto;
 
   FacturaDetalle(
       {required this.facturaNumero,

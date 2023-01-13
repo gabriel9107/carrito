@@ -83,7 +83,7 @@ class CarritoArticulos extends State<CartPage> {
                               color: Colors.white,
                             ),
                             Text(
-                              detalleFactura[index].cantidadProducto,
+                              detalleFactura[index].cantidadProducto.toString(),
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,

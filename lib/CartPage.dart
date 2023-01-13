@@ -1,6 +1,7 @@
 import 'package:carrito/clases/facturaTempProductos.dart';
 import 'package:carrito/main.dart';
 import 'package:carrito/pantallas/buscarProductosEnFactura.dart';
+import 'package:carrito/pantallas/nav_screen.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,7 @@ class _mainPage extends State<CartPage> {
           )
         ],
       ),
+      drawer: NavigationDrawer(),
       body: RefreshIndicator(
         onRefresh: refresh,
         child: ListView.builder(
@@ -109,7 +111,9 @@ class _mainPage extends State<CartPage> {
                                   color: Colors.white,
                                 ),
                                 Text(
-                                  detalleFactura[index].cantidadProducto,
+                                  detalleFactura[index]
+                                      .cantidadProducto
+                                      .toString(),
                                   style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,

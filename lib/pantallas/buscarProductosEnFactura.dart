@@ -77,7 +77,8 @@ class MySearchDelegateParaProductos extends SearchDelegate {
                         codigoProducto: suggestion.codigoProducto,
                         montoproducto: suggestion.precioProducto,
                         nombreProducto: suggestion.nombreProducto,
-                        cantidadProducto: textController.text.toString()));
+                        cantidadProducto:
+                            int.parse(textController.text.toString())));
                     close(context, null);
                   },
                   child: Text('Agregar'),
