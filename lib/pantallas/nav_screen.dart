@@ -1,7 +1,10 @@
 import 'package:carrito/pantallas/CarritoArticulos.dart';
+import 'package:carrito/pantallas/clienteLista.dart';
+import 'package:carrito/pantallas/start.dart';
 import 'package:flutter/material.dart';
 
 import '../CartPage.dart';
+import 'listaDePedidos.dart';
 
 class NavigationDrawer extends StatelessWidget {
   // const NavigationDrawer({Key? key}) : super(key: key)
@@ -64,21 +67,21 @@ class NavigationDrawer extends StatelessWidget {
               title: const Text('Dashboard'),
               onTap: () =>
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => CartPage(),
+                    builder: (context) => StatsScreen(),
                   ))),
           ListTile(
               leading: const Icon(Icons.person_add),
               title: const Text('Clientes'),
               onTap: () =>
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => CartPage(),
+                    builder: (context) => clienteLista(),
                   ))),
           ListTile(
               leading: const Icon(Icons.point_of_sale_sharp),
               title: const Text('Pedidos de Venta'),
               onTap: () =>
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => CartPage(),
+                    builder: (context) => pedidosLista(),
                   ))),
           ListTile(
               leading: const Icon(Icons.production_quantity_limits),

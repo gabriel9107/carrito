@@ -1,3 +1,4 @@
+import 'package:carrito/pantallas/start.dart';
 import 'package:flutter/material.dart';
 
 import 'CartPage.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: CartPage(),
+      home: StatsScreen(),
 
       // const MyHomePage(title: 'Flutter Demo Home Page'),
     );

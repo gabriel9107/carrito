@@ -28,6 +28,7 @@ class _mainPage extends State<CartPage> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text('Siga Mobile - Pedidos'),
+
         backgroundColor: Color.fromARGB(255, 42, 135, 221),
 
         //Boton de Buscar
