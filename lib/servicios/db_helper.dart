@@ -32,87 +32,87 @@ class DatabaseHelper {
       Phone2 TEXT, 
       Comment1 TEXT
       )''');
-    await db.execute('''CREATE TABLE InvoiceHeaders(
-        ID PRIMARY KEY AUTOINCREMENT, 
-      ,SALESID TEXT
-      ,INVOICEID TEXT
-      ,PAYMENT TEXT
-      ,INVOICEDATE TEXT
-      ,DUEDATE TEXT
-      ,INVOICEAMOUNT TEXT
-      ,INVOICINGNAME TEXT
-      ,PrintCounterDevolution TEXT
-      ,PrintCounterCreditNote TEXT
-      ,INVOICEACCOUNT TEXT
-      ,PayedAmount TEXT
-      )''');
-    await db.execute('''CREATE TABLE SalesOrders(
-        ID PRIMARY KEY AUTOINCREMENT, 
-      ,Cash TEXT 
-      ,Change TEXT
-      ,CreateAt TEXT
-      ,CreateBy TEXT
-      ,CustomerID TEXT
-      ,Date TEXT
-      ,GPID TEXT 
-      ,IsDelete TEXT
-      ,Totals TEXT 
-      ,VAT TEXT
-      ,UserName TEXT
-      ,UserCode TEXT 
-      ,UserID TEXT 
-      ,Status TEXT
-      ,Commets TEXT
-      )''');
+    // await db.execute('''CREATE TABLE InvoiceHeaders(
+    //     ID PRIMARY KEY AUTOINCREMENT,
+    //   ,SALESID TEXT
+    //   ,INVOICEID TEXT
+    //   ,PAYMENT TEXT
+    //   ,INVOICEDATE TEXT
+    //   ,DUEDATE TEXT
+    //   ,INVOICEAMOUNT TEXT
+    //   ,INVOICINGNAME TEXT
+    //   ,PrintCounterDevolution TEXT
+    //   ,PrintCounterCreditNote TEXT
+    //   ,INVOICEACCOUNT TEXT
+    //   ,PayedAmount TEXT
+    //   )''');
+    // await db.execute('''CREATE TABLE SalesOrders(
+    //     ID PRIMARY KEY AUTOINCREMENT,
+    //   ,Cash TEXT
+    //   ,Change TEXT
+    //   ,CreateAt TEXT
+    //   ,CreateBy TEXT
+    //   ,CustomerID TEXT
+    //   ,Date TEXT
+    //   ,GPID TEXT
+    //   ,IsDelete TEXT
+    //   ,Totals TEXT
+    //   ,VAT TEXT
+    //   ,UserName TEXT
+    //   ,UserCode TEXT
+    //   ,UserID TEXT
+    //   ,Status TEXT
+    //   ,Commets TEXT
+    //   )''');
 
-    await db.execute('''CREATE TABLE SalesLines(
-     ID PRIMARY KEY AUTOINCREMENT, 
-      ,SalesOrdersID TEXT 
-      ,Price TEXT
-      ,Qty TEXT 
-      ,ProductID TEXT
-      ,ProductCode TEXT
-      ,Products_ID TEXT
-      ,ProductName TEXT
-      )''');
+    // await db.execute('''CREATE TABLE SalesLines(
+    //  ID PRIMARY KEY AUTOINCREMENT,
+    //   ,SalesOrdersID TEXT
+    //   ,Price TEXT
+    //   ,Qty TEXT
+    //   ,ProductID TEXT
+    //   ,ProductCode TEXT
+    //   ,Products_ID TEXT
+    //   ,ProductName TEXT
+    //   )''');
 
-    await db.execute('''CREATE TABLE Products(
-      ID PRIMARY KEY AUTOINCREMENT, 
-     
-      ,IsDelete TEXT 
-      ,Price TEXT
-      ,ProductCode TEXT
-      ,ProductID TEXT 
-      ,ProductName TEXT
-      ,Qty TEXT 
-      ,TypeOSales TEXT 
-      ,UoM TEXT
-      )''');
+    // await db.execute('''CREATE TABLE Products(
+    //   ID PRIMARY KEY AUTOINCREMENT,
 
-    await db.execute('''CREATE TABLE PaymentOrders(
-      ID PRIMARY KEY AUTOINCREMENT, 
-     
-     Id TEXT
-      ,VendorID TEXT
-      ,Datetime TEXT
-      ,Amount TEXT
-      ,Method TEXT
-      ,BankName TEXT
-      ,CheckNumber TEXT
-      ,CheckDate TEXT
-      ,IsEnabled TEXT
-      ,Customer_Code TEXT
-      ,IsOpen TEXT
-      ,Imported TEXT
-      )''');
-    await db.execute('''CREATE TABLE PaymentItems(
-      Id  PRIMARY KEY AUTOINCREMENT
-      ,PaymentOrderId TEXT
-      ,InvoiceNumber TEXT
-      ,AmountApply TEXT
-      ,InvoiveAmountAtMoment TEXT
-      ,IsEnabled TEXT
-      )''');
+    //   ,IsDelete TEXT
+    //   ,Price TEXT
+    //   ,ProductCode TEXT
+    //   ,ProductID TEXT
+    //   ,ProductName TEXT
+    //   ,Qty TEXT
+    //   ,TypeOSales TEXT
+    //   ,UoM TEXT
+    //   )''');
+
+    // await db.execute('''CREATE TABLE PaymentOrders(
+    //   ID PRIMARY KEY AUTOINCREMENT,
+
+    //  Id TEXT
+    //   ,VendorID TEXT
+    //   ,Datetime TEXT
+    //   ,Amount TEXT
+    //   ,Method TEXT
+    //   ,BankName TEXT
+    //   ,CheckNumber TEXT
+    //   ,CheckDate TEXT
+    //   ,IsEnabled TEXT
+    //   ,Customer_Code TEXT
+    //   ,IsOpen TEXT
+    //   ,Imported TEXT
+    //   )''');
+    // await db.execute('''CREATE TABLE PaymentItems(
+    //   Id  PRIMARY KEY AUTOINCREMENT
+    //   ,PaymentOrderId TEXT
+    //   ,InvoiceNumber TEXT
+    //   ,AmountApply TEXT
+    //   ,InvoiveAmountAtMoment TEXT
+    //   ,IsEnabled TEXT
+    //   )''');
   }
 
   Future<List<Customers>> getCustomers() async {
