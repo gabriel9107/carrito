@@ -1,5 +1,10 @@
+import 'dart:ffi';
+
 import 'package:carrito/clases/clientes.dart';
+import 'package:carrito/clases/facturas.dart';
 import 'package:flutter/services.dart';
+
+import 'formatos.dart';
 
 class FacturaMaster {
   late int iD;
@@ -7,10 +12,10 @@ class FacturaMaster {
   String idClienteFactura;
   // DateTime fechaFactura;
   int cantidadArticulos;
-  double subtotal;
-  double montoDescuento;
-  int montoImpuesto;
-  double totalApagar;
+  String subtotal;
+  String montoDescuento;
+  String montoImpuesto;
+  String totalApagar;
 
   FacturaMaster(
       {required this.iD,
@@ -24,55 +29,66 @@ class FacturaMaster {
       required this.totalApagar});
 
   static totales() {
+    int facturaNumeriI = 1;
+    int cantidadArticulos = 0;
+    Double montoDescuento;
+    int descuentoI = 0;
+
+    double impuestoI;
+    double impuesto = 0;
+    double descuento = 0;
+
+    double subtotal = 0;
+
+    double totalApagar = 0;
+
+    descuentoI = 10;
+
+    if (FacturaDetalle.getFacturaDetalle().isEmpty) {
+      return FacturaMaster(
+          cantidadArticulos: cantidadArticulos,
+          facturaNumero: "1",
+          iD: 1,
+          idClienteFactura: "1",
+          montoDescuento: numberFormat(descuento),
+          montoImpuesto: numberFormat(impuesto),
+          subtotal: numberFormat(subtotal),
+          totalApagar: numberFormat(totalApagar));
+    }
+    cantidadArticulos = FacturaDetalle.getFacturaDetalle()
+        .map((e) => e.cantidadProducto)
+        .reduce((value, element) => value + element)
+        .toInt();
+
+    subtotal = (FacturaDetalle.getFacturaDetalle()
+            .map((e) => e.montoproducto)
+            .reduce((value, element) => value + element) *
+        cantidadArticulos);
+
+    descuento = ((subtotal * descuentoI) / 1000).toDouble();
+
+    impuestoI = 5;
+
+    impuesto = ((subtotal * impuestoI) / 1000).toDouble();
+
+    totalApagar = ((subtotal - descuento) + impuesto);
+
     return FacturaMaster(
-        cantidadArticulos: 20,
-        facturaNumero: "1",
+        cantidadArticulos: cantidadArticulos,
+        facturaNumero: facturaNumeriI.toString(),
         iD: 1,
         idClienteFactura: "1",
-        montoDescuento: 15.4,
-        montoImpuesto: 2,
-        subtotal: 23,
-        totalApagar: 15);
-
-    // double impuestoEmpleado;
-    // double subtotalProducto;
-    // int cantidadArticulo;
-    // double montoDescuento ;
-    // double impuesto;
-
-    // montoDescuento = (subtotalProducto * descuentoPorEmpleador );
-
-    // impuestoEmpleado = 10;
-
-    // // impuestoEmpleado = impuestoPorEmpleador();
-
-    // subtotalProducto = FacturaDetalle.getFacturaDetalle()
-    //     .map((e) => e.montoproducto)
-    //     .reduce((value, element) => value + element)
-    //     .toDouble();
-
-    // cantidadArticulo = FacturaDetalle.getFacturaDetalle()
-    //     .map((e) => e.cantidadProducto)
-    //     .reduce((value, element) => value + element);
-
-    // impuesto = (subtotalProducto * impuestoEmpleado);
-
-    // var result = FacturaMaster(
-    //     iD: 1,
-    //     idClienteFactura: "40221025725",
-    //     facturaNumero: "1",
-    //     cantidadArticulos: cantidadArticulo,
-    //     montoDescuento:
-    //     montoImpuesto:impuesto,
-    //     subtotal: subtotal,
-    //     totalApagar: totalApagar);
+        montoDescuento: numberFormat(descuento),
+        montoImpuesto: numberFormat(impuesto),
+        subtotal: numberFormat(subtotal),
+        totalApagar: numberFormat(totalApagar));
   }
 
-  double impuestoPorEmpleador() {
-    return 10.0;
+  int impuestoPorEmpleador() {
+    return 10;
   }
 
-  double descuentoPorEmpleador() {
+  double get descuentoPorEmpleador {
     return 10.0;
   }
 }
@@ -103,12 +119,9 @@ class FacturaDetalle {
 
   static List<FacturaDetalle> getFacturaDetalle() {
     return facturaDetalle.toList();
-    //   FacturaDetalle(
-    //       facturaNumero: '01',
-    //       codigoProducto: '64511-23460-RE',
-    //       montoproducto: 227.6,
-    //       nombreProducto: 'CATAL. TRAS. 37',
-    //       cantidadProducto: '10')
-    // ];
+  }
+
+  void guardarFactura(facturaCabecera factura) {
+    print("activo");
   }
 }

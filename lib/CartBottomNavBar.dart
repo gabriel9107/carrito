@@ -1,4 +1,8 @@
 import 'package:carrito/clases/facturaTempProductos.dart';
+import 'package:carrito/clases/facturas.dart';
+import 'package:carrito/pantallas/facturas/ordenDeventa.dart';
+import 'package:carrito/pantallas/listaDePedidos.dart';
+import 'package:carrito/servicios/db_helper.dart';
 import 'package:flutter/material.dart';
 
 class CartBottomNavBar extends StatelessWidget {
@@ -117,13 +121,69 @@ class CartBottomNavBar extends StatelessWidget {
                     color: Color.fromARGB(255, 113, 219, 86),
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Text(
-                    "Guardar",
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
-                  ),
+                  child: Row(children: <Widget>[
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.green,
+                        onPrimary: Colors.white,
+                        shadowColor: Colors.greenAccent,
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        minimumSize: Size(680, 140), //////// HERE
+                      ),
+                      child: Text(
+                        "Guardar",
+                        style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      onPressed: () async {
+                      var detallePedido = OrdenVentaDetalle(salesOrdersID: salesOrdersID, price: price, qty: qty, productCode: productCode, productName: productName)
+
+
+
+                        var cabecera = OrdenVenta(
+                            cash: "0",
+                            change: "0",
+                            customerID: "40221025725",
+                            date: DateTime.now().toString(),
+                            gPID: "",
+                            isDelete: "0",
+                            totals: totales.totalApagar.toString(),
+                            userName: "gabriel9107@gmail.com",
+                            vAT: totales.montoImpuesto.toString(),
+                            status: "1",
+                            commets: "commets");
+
+                        //agregando detalle a la cabeceera
+                        await DatabaseHelper.instance.AddSales(cabecera);
+
+                        await DatabaseHelper.instance.AddSalesDetalle(detallePedido)
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => pedidosLista()));
+                        // print("hola");
+                      },
+                    )
+                  ]),
+                  // alignment: Alignment.center,
+                  // height: 50,
+                  // width: double.infinity,
+                  // decoration: BoxDecoration(
+                  //   color: Color.fromARGB(255, 113, 219, 86),
+                  //   borderRadius: BorderRadius.circular(20),
+                  // ),
+                  // child:
+                  // Text(
+                  //   "Guardar",
+                  //   style: TextStyle(
+                  //       fontSize: 16,
+                  //       fontWeight: FontWeight.bold,
+                  //       color: Colors.white),
+                  // ),
                 )
               ],
             )));

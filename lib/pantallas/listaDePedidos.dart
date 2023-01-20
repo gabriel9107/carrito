@@ -4,6 +4,7 @@ import 'package:carrito/pantallas/detalleCliente.dart';
 import 'package:flutter/material.dart';
 import '../CartPage.dart';
 import '../servicios/db_helper.dart';
+import 'facturas/ordenDeventa.dart';
 import 'nav_screen.dart';
 import 'nuevoCliente.dart';
 
@@ -52,17 +53,17 @@ class _ListaOedidosState extends State<pedidosLista> {
         ),
       ),
       body: Center(
-        child: FutureBuilder<List<Customers>>(
-          future: DatabaseHelper.instance.getCustomers(),
+        child: FutureBuilder<List<OrdenVenta>>(
+          future: DatabaseHelper.instance.getOrdenes(),
           builder:
-              (BuildContext context, AsyncSnapshot<List<Customers>> snapshot) {
+              (BuildContext context, AsyncSnapshot<List<OrdenVenta>> snapshot) {
             if (!snapshot.hasData) {
               return Center(child: Text('Cargando...'));
             }
             return snapshot.data!.isEmpty
-                ? Center(child: Text('No existen clientes en el momento...'))
+                ? Center(child: Text('No existen Orenes en el momento...'))
                 : ListView(
-                    children: snapshot.data!.map((customer) {
+                    children: snapshot.data!.map((pedidos) {
                       return Card(
                         color: Colors.white,
                         elevation: 2.0,
@@ -72,13 +73,13 @@ class _ListaOedidosState extends State<pedidosLista> {
                             child: Icon(Icons.emoji_people),
                           ),
                           title: Text("Pre orden :" +
-                              customer.CustomerCode +
+                              pedidos.id.toString() +
                               ' |  Cliente :' +
-                              customer.CustomerName),
+                              pedidos.customerID),
                           subtitle: Text("Fecha Orden" +
-                              customer.CustomerDir +
-                              ' | ' +
-                              customer.Phone1),
+                              pedidos.date.toString() +
+                              ' | Total : ' +
+                              pedidos.totals.toString()),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: <Widget>[
