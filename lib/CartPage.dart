@@ -1,5 +1,5 @@
 import 'package:carrito/clases/facturaTempProductos.dart';
-import 'package:carrito/main.dart';
+
 import 'package:carrito/pantallas/buscarProductosEnFactura.dart';
 import 'package:carrito/pantallas/nav_screen.dart';
 
@@ -28,7 +28,6 @@ class _mainPage extends State<CartPage> {
       backgroundColor: Colors.grey[200],
       appBar: AppBar(
         title: Text('Siga Mobile - Pedidos'),
-
         backgroundColor: Color.fromARGB(255, 42, 135, 221),
 
         //Boton de Buscar
@@ -108,7 +107,7 @@ class _mainPage extends State<CartPage> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Icon(
-                                  CupertinoIcons.minus,
+                                  CupertinoIcons.plus,
                                   color: Colors.white,
                                 ),
                                 Text(

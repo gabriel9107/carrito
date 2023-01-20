@@ -119,9 +119,12 @@ class FacturaDetalle {
 
   static List<FacturaDetalle> getFacturaDetalle() {
     return facturaDetalle.toList();
+<<<<<<< HEAD
   }
 
   void guardarFactura(facturaCabecera factura) {
     print("activo");
+=======
+>>>>>>> e557b1310a309984b038066993dc727f61409b71
   }
 }

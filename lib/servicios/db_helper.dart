@@ -33,6 +33,7 @@ class DatabaseHelper {
       Phone2 TEXT, 
       Comment1 TEXT
       )''');
+<<<<<<< HEAD
     await db.execute('''CREATE TABLE InvoiceHeaders(
          id INTEGER PRIMARY KEY AUTOINCREMENT
       ,SALESID TEXT
@@ -94,6 +95,67 @@ class DatabaseHelper {
 
     // await db.execute('''CREATE TABLE PaymentOrders(
     //    ID INTEGER PRIMARY KEY AUTOINCREMENT
+=======
+    // await db.execute('''CREATE TABLE InvoiceHeaders(
+    //     ID PRIMARY KEY AUTOINCREMENT,
+    //   ,SALESID TEXT
+    //   ,INVOICEID TEXT
+    //   ,PAYMENT TEXT
+    //   ,INVOICEDATE TEXT
+    //   ,DUEDATE TEXT
+    //   ,INVOICEAMOUNT TEXT
+    //   ,INVOICINGNAME TEXT
+    //   ,PrintCounterDevolution TEXT
+    //   ,PrintCounterCreditNote TEXT
+    //   ,INVOICEACCOUNT TEXT
+    //   ,PayedAmount TEXT
+    //   )''');
+    // await db.execute('''CREATE TABLE SalesOrders(
+    //     ID PRIMARY KEY AUTOINCREMENT,
+    //   ,Cash TEXT
+    //   ,Change TEXT
+    //   ,CreateAt TEXT
+    //   ,CreateBy TEXT
+    //   ,CustomerID TEXT
+    //   ,Date TEXT
+    //   ,GPID TEXT
+    //   ,IsDelete TEXT
+    //   ,Totals TEXT
+    //   ,VAT TEXT
+    //   ,UserName TEXT
+    //   ,UserCode TEXT
+    //   ,UserID TEXT
+    //   ,Status TEXT
+    //   ,Commets TEXT
+    //   )''');
+
+    // await db.execute('''CREATE TABLE SalesLines(
+    //  ID PRIMARY KEY AUTOINCREMENT,
+    //   ,SalesOrdersID TEXT
+    //   ,Price TEXT
+    //   ,Qty TEXT
+    //   ,ProductID TEXT
+    //   ,ProductCode TEXT
+    //   ,Products_ID TEXT
+    //   ,ProductName TEXT
+    //   )''');
+
+    // await db.execute('''CREATE TABLE Products(
+    //   ID PRIMARY KEY AUTOINCREMENT,
+
+    //   ,IsDelete TEXT
+    //   ,Price TEXT
+    //   ,ProductCode TEXT
+    //   ,ProductID TEXT
+    //   ,ProductName TEXT
+    //   ,Qty TEXT
+    //   ,TypeOSales TEXT
+    //   ,UoM TEXT
+    //   )''');
+
+    // await db.execute('''CREATE TABLE PaymentOrders(
+    //   ID PRIMARY KEY AUTOINCREMENT,
+>>>>>>> e557b1310a309984b038066993dc727f61409b71
 
     //  Id TEXT
     //   ,VendorID TEXT
@@ -109,7 +171,11 @@ class DatabaseHelper {
     //   ,Imported TEXT
     //   )''');
     // await db.execute('''CREATE TABLE PaymentItems(
+<<<<<<< HEAD
     //    ID INTEGER PRIMARY KEY AUTOINCREMENT
+=======
+    //   Id  PRIMARY KEY AUTOINCREMENT
+>>>>>>> e557b1310a309984b038066993dc727f61409b71
     //   ,PaymentOrderId TEXT
     //   ,InvoiceNumber TEXT
     //   ,AmountApply TEXT
