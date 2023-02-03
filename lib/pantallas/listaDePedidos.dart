@@ -28,6 +28,7 @@ class _ListaOedidosState extends State<pedidosLista> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Pedido de Ventas'),
+
         // backgroundColor: Color.fromARGB(255, 25, 28, 228),
 
         actions: [
@@ -44,7 +45,7 @@ class _ListaOedidosState extends State<pedidosLista> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => CartPage()),
+            MaterialPageRoute(builder: (context) => CartPage("", null)),
           );
         },
         tooltip: 'Agregar',
@@ -102,7 +103,8 @@ class _ListaOedidosState extends State<pedidosLista> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CartPage()),
+                                  builder: (context) =>
+                                      CartPage(pedidos.customerID, pedidos.id)),
                             );
                             // NavigateDetail('Edit Product');
                           },

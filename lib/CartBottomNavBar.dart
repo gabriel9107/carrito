@@ -6,6 +6,8 @@ import 'package:carrito/servicios/db_helper.dart';
 import 'package:flutter/material.dart';
 
 class CartBottomNavBar extends StatelessWidget {
+  String customerName;
+  CartBottomNavBar(this.customerName);
   @override
   Widget build(BuildContext context) {
     FacturaMaster totales = FacturaMaster.totales();
@@ -140,27 +142,8 @@ class CartBottomNavBar extends StatelessWidget {
                             color: Colors.white),
                       ),
                       onPressed: () async {
-                      var detallePedido = OrdenVentaDetalle(salesOrdersID: salesOrdersID, price: price, qty: qty, productCode: productCode, productName: productName)
+                        print(FacturaDetalle.guardarFactura(this.customerName));
 
-
-
-                        var cabecera = OrdenVenta(
-                            cash: "0",
-                            change: "0",
-                            customerID: "40221025725",
-                            date: DateTime.now().toString(),
-                            gPID: "",
-                            isDelete: "0",
-                            totals: totales.totalApagar.toString(),
-                            userName: "gabriel9107@gmail.com",
-                            vAT: totales.montoImpuesto.toString(),
-                            status: "1",
-                            commets: "commets");
-
-                        //agregando detalle a la cabeceera
-                        await DatabaseHelper.instance.AddSales(cabecera);
-
-                        await DatabaseHelper.instance.AddSalesDetalle(detallePedido)
                         Navigator.push(
                             context,
                             MaterialPageRoute(

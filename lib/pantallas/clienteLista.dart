@@ -3,6 +3,8 @@ import 'package:carrito/clases/configuracion/palette.dart';
 import 'package:carrito/pantallas/detalleCliente.dart';
 import 'package:flutter/material.dart';
 import '../CartPage.dart';
+import '../servicios/DatabaseManager.dart';
+import '../servicios/clienteservices.dart';
 import '../servicios/db_helper.dart';
 import 'nav_screen.dart';
 import 'nuevoCliente.dart';
@@ -20,6 +22,9 @@ class CustomerListState extends State<clienteLista> {
   void initState() {
     // Clients = Client.getClients();
     super.initState();
+
+    print("prueba");
+    ClienteServices();
   }
 
   Widget build(BuildContext context) {
@@ -86,7 +91,9 @@ class CustomerListState extends State<clienteLista> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => CartPage()));
+                                          builder: (context) => CartPage(
+                                              customer.CustomerCode.toString(),
+                                              null)));
                                 },
                               ),
                               IconButton(

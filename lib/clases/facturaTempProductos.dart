@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'dart:ffi';
 
 import 'package:carrito/clases/clientes.dart';
 import 'package:carrito/clases/facturas.dart';
+import 'package:carrito/pantallas/facturas/ordenDeventa.dart';
 import 'package:flutter/services.dart';
 
+import '../servicios/db_helper.dart';
 import 'formatos.dart';
 
 class FacturaMaster {
@@ -119,12 +122,41 @@ class FacturaDetalle {
 
   static List<FacturaDetalle> getFacturaDetalle() {
     return facturaDetalle.toList();
-<<<<<<< HEAD
   }
 
-  void guardarFactura(facturaCabecera factura) {
-    print("activo");
-=======
->>>>>>> e557b1310a309984b038066993dc727f61409b71
+  static guardarFactura(String customerName) {
+    String SalesOrdeNumer = "1";
+
+    var fdetalle = facturaDetalle.toList();
+    var fheader = facturaCabecera.getFacturas();
+
+    fdetalle.forEach((element) {
+      DatabaseHelper.instance.AddSalesDetalle(OrdenVentaDetalle(
+        salesOrdersID: SalesOrdeNumer,
+        productCode: element.codigoProducto,
+        price: element.montoproducto,
+        productName: element.nombreProducto,
+        qty: element.cantidadProducto,
+      ));
+    });
+
+    fheader.forEach((element) {
+      DatabaseHelper.instance.AddSales(OrdenVenta(
+          cash: "0",
+          ordenNumero: SalesOrdeNumer,
+          change: "0",
+          customerID: customerName,
+          date: DateTime.now().toString(),
+          gPID: "0",
+          isDelete: "0",
+          totals: element.montofactura,
+          userName: "gabriel9107",
+          vAT: element.montofactura,
+          status: "cargando",
+          commets: "ningun comentario es correcto"));
+    });
+
+    facturaDetalle.clear();
+    facturaCabecera.getFacturas().clear();
   }
 }

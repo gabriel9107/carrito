@@ -1,5 +1,6 @@
 import 'package:carrito/pantallas/CarritoArticulos.dart';
 import 'package:carrito/pantallas/clienteLista.dart';
+import 'package:carrito/pantallas/login/login.dart';
 import 'package:carrito/pantallas/start.dart';
 import 'package:flutter/material.dart';
 
@@ -88,7 +89,7 @@ class NavigationDrawer extends StatelessWidget {
               title: const Text('Productos'),
               onTap: () =>
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => CartPage(),
+                    builder: (context) => CartPage("", null),
                   ))),
           ListTile(
             leading: const Icon(Icons.padding_outlined),
@@ -107,10 +108,12 @@ class NavigationDrawer extends StatelessWidget {
             onTap: () {},
           ),
           ListTile(
-            leading: const Icon(Icons.exit_to_app_outlined),
-            title: const Text('Salir'),
-            onTap: () {},
-          ),
+              leading: const Icon(Icons.exit_to_app_outlined),
+              title: const Text('Salir'),
+              onTap: () =>
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => LoginScreen(),
+                  ))),
         ],
       ));
 }
